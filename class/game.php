@@ -4,7 +4,6 @@ class Game {
     protected $map;
     protected $playerPos;
     protected $launch;
-    protected $player;
     
 
     function __construct(){
@@ -18,17 +17,15 @@ class Game {
         return $this->playerPos;
     }
     public function getPlayer(){
-        return $this->player;
+        return $this->playerPos;
     }
 
     public function setMap($map){
         $this->map = $map;
     }
-    public function setPlayerPos($playerPos){
-        $this->playerPos = $playerPos;
-    }
-    public function setPlayer($player){
-        $this->player = $player;
+    
+    public function setPlayer($playerPos){
+        $this->player = $playerPos;
     }
     public function setCell($x, $y, $cell) {
         $this->map[$x][$y] = $cell;
@@ -44,7 +41,7 @@ class Game {
         ['S', 1, 0, 'E', 0, 0]
         ];
         $this->map = $map;
-        $this->setPlayerPos($this->getMap());
+        $this->setPlayer($this->getMap());
 
         for($line = 0; $line < count($this->getMap()); $line++) {
             for($column = 0; $column < count($this->getMap()[$line]); $column++) {
